@@ -9,15 +9,21 @@ import Avatar from '@material-ui/core/Avatar';
 const Messages = ({ messages }) => {
   return (
     <List>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
+      {messages.flatMap( (message, index) => [
+        <ListItem alignItems="flex-start" key={index}>
+          <ListItemAvatar>
+            <Avatar alt="Julian" src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary={message}
+          />
+        </ListItem>,
+        <Divider 
+          variant="inset" 
+          component="li" 
+          key={"divider-"+index}
         />
-      </ListItem>
-      <Divider variant="inset" component="li" />
+      ])}
     </List>
   );
 }
